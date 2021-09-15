@@ -11,7 +11,7 @@
 
 
 # Django
-- [DRF](ETC/DRF.md)
-- [Django admin](ETC/Django_admin.md)
+- [DRF](Django/DRF.md)
+- [Django admin](Django/Django_admin.md)
 
 
