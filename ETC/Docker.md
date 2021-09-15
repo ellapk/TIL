@@ -18,7 +18,7 @@
 - Immutable
 
 - Docker hub에 등록하거나 Docker Registry를 직접 만들어 관리할 수 있음
-![container](images/image.png)
+![Image](images/Image.png)
 
 
 ## **Container**
