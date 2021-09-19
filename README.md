@@ -13,5 +13,8 @@
 # Django
 - [DRF](Django/DRF.md)
 - [Django admin](Django/Django_admin.md)
+- [MTV](Django/MTV.md)
+- [MVC](Django/MVC.md)
+
 
 
