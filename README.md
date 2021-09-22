@@ -3,6 +3,8 @@
 
 카테고리로 구분한다.
 
+blog : https://xean.tistory.com/
+
 
 # etc
 - [API](ETC/API.md)
