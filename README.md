@@ -20,7 +20,7 @@ blog : https://xean.tistory.com/
 
 
 # React
-- [Component&Props](React/Component&Pros.md)
+- [Component&Props](React/Component&Props.md)
 - [Element](React/Element.md)
 - [Hook](React/Hook.md)
 - [Render](React/Render.md)
