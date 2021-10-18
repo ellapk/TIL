@@ -21,5 +21,7 @@
 - [Component&Props](React/Component&Props.md)
 - [Element](React/Element.md)
 - [Hook](React/Hook.md)
+- [Redux](React/Redux.md)
 - [Render](React/Render.md)
+- [State](React/State.md)
 
