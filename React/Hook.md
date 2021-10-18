@@ -1,4 +1,4 @@
-## **Hook이란?**
+# **Hook이란?**
 - 특별한 함수! 예를 들어 useState를 이용하여 state를 함수 컴포넌트 안에서 사용가능하게 해줌
 
 
@@ -61,3 +61,64 @@ function Example(){
   </button>
 ```
 
+
+### **메모이제이션 훅 : useMemo, useCallback**
+
+
+#### **useMemo**
+- 계산량이 많은 함수의 반환값을 재활용하는 용도로 사용됨.
+
+```
+import React, {useMemo} from 'react';
+import {runExpensiveJob} from './util';
+
+function MyComponent({v1,v2}){
+  const value = useMemo(() => runExpensiveJob(v1,v2),[v1,v2]);
+  return <p>{'value is ${value}'}</p>;
+}
+```
+- useMemo 훅의 첫번째 매개변수로 함수를 입력한다. useMemo 훅은 이 함수가 반환된 값을 기억한다.
+
+
+#### **useCallback**
+- 리액트의 렌더링 성능을 위해 제공되는 훅이다. 불필요한 렌더링을 막을 수 있음.
+
+```
+import React, {useState} from 'react';
+import {saveToServer} from './api';
+import UserEdit from'./UserEdit';
+
+function Profile(){
+  const [name, setName] = useState('');
+  const [age, setAge] =useState(0);
+  return(
+    <div>
+    <p>{'name is ${name}'}</p>
+    <p>{'age is ${age}'}</p>
+    <UserEdit
+      onSave={()=>saveToServer(name,age)}
+      setName={setName}
+      setAge={setAge}
+    />
+    </div>
+  );
+}
+```
+- 상단의 코드에선 UserEdit 컴포넌트에서 PureComponent 혹은 React.memo를 사용해도 onSave 속성값이 항상 변경되는 불필요한 렌더링이 발생한다.
+
+```
+//...
+function Profile(){
+  const [name, setName] = useState('');
+  const [age, setAge] =useState(0);
+  const onSave = useCallback() => saveToServer(name,age),[name,age]);
+  return(
+    <p>{'name is ${name}'}</p>
+    <p>{'age is ${age}'}</p>
+    <UserEdit onSave={onSave} setName={setName} setAge={setAge}/>
+    </div>
+  );
+}
+```
+- useCallback 훅을 사용하면 이전에 onSave 속성값으로 전달했던 것과 같은 함수를 useCallback 훅의 첫번째 매개변수로 입력한다. 
+- 두번째 매개변수로 전달한 배열의 값이 변경되지 않으면 이전에 생성한 함수가 재사용되므로 name과 age값이 변경되지 않는 이상 UserEdit 컴포넌트의 onSave 속성값으로 항상 같은 함수가 전달된다.
